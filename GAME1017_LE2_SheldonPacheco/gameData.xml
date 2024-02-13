@@ -1,105 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GameData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <killCount>34</killCount>
+  <killCount>54</killCount>
   <TurretPositions>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-3.24519324</x>
+      <y>-3.879808</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-5.625001</x>
+      <y>-3.87980771</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-1.94711518</x>
+      <y>-3.85576868</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-3.43750072</x>
+      <y>-2.221154</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>4.807694</x>
+      <y>-2.53365374</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-1.15384638</x>
+      <y>-2.653846</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>1.20192313</x>
+      <y>-4.16826963</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>3.05288434</x>
+      <y>-2.55769229</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-4.39903975</x>
+      <y>-3.8557694</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-5.408654</x>
+      <y>-3.423077</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>1.77884579</x>
+      <y>-2.701923</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-4.25480843</x>
+      <y>-2.6057694</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-5.456732</x>
+      <y>-2.4375</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>4.78365374</x>
+      <y>-4.048077</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>5.985578</x>
+      <y>-3.903846</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>-2.42788482</x>
+      <y>-2.6057694</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>5.84134769</x>
+      <y>-2.629808</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>0.4567316</x>
+      <y>-2.55769253</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>2.23557687</x>
+      <y>-3.783654</y>
       <z>0</z>
     </Position>
     <Position>
-      <x>0</x>
-      <y>-4</y>
+      <x>3.485577</x>
+      <y>-3.615384</y>
       <z>0</z>
     </Position>
   </TurretPositions>
