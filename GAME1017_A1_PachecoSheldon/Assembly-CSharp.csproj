@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{79433556-9DE5-EDD9-B258-ED5CBE94756C}</ProjectGuid>
+    <ProjectGuid>{AE2D527F-5957-5597-384E-80F5C0506E7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,15 +60,19 @@
     <Analyzer Include="C:\Program Files\Unity 2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\EventManager.cs" />
-    <Compile Include="Assets\Scripts\FailedScreenManager.cs" />
-    <Compile Include="Assets\Scripts\TreeSpawner.cs" />
-    <Compile Include="Assets\Scripts\ScrollingBackgroundScript.cs" />
-    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
-    <Compile Include="Assets\Scripts\SnowmanSpawner.cs" />
-    <Compile Include="Assets\Scripts\PlayerProjectileScript.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\EnemyProjectileScript.cs" />
+    <Compile Include="Assets\Scripts\MainManagerScripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\MainManagerScripts\EventManager.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\SnowmanSpawner.cs" />
+    <Compile Include="Assets\Scripts\FailedSceneScripts\FailedScreenManager.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\EnemyProjectileScript.cs" />
+    <Compile Include="Assets\Scripts\TitleSceneScripts\InstructionsButton.cs" />
+    <Compile Include="Assets\Scripts\TitleSceneScripts\PlayButton.cs" />
+    <Compile Include="Assets\Scripts\MainManagerScripts\MainManagerLoad.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\TreeSpawner.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\ScrollingBackgroundScript.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\PlayerProjectileScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
