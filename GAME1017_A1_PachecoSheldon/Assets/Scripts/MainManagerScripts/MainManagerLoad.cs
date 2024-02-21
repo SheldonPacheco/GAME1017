@@ -8,7 +8,7 @@ public class MainManagerLoad : MonoBehaviour
     public GameObject titleScreen;
 
     public GameObject instructionsPanel;
-    private GameObject currentInstructionsPanel;
+    public static GameObject currentInstructionsPanel;
 
     private SpriteRenderer titleScreenSpriteRenderer;
     private Sprite titleScreenBackground;
@@ -20,8 +20,9 @@ public class MainManagerLoad : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(ManagerOfAllThings);
-
+        GameObject ManagerOfAllThingsInstance = Instantiate(ManagerOfAllThings);
+        DontDestroyOnLoad(ManagerOfAllThingsInstance);
+        
         titleScreenSpriteRenderer = titleScreen.GetComponent<SpriteRenderer>();
         titleScreenBackground = titleScreenSpriteRenderer.sprite;
     }
