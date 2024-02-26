@@ -63,7 +63,7 @@ public class SoundManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (settingsPanel != null && settingsPanel.activeSelf)
+            if (settingsPanel != null && settingsPanel.activeSelf == true)
             {
                 Time.timeScale = 1f;
                 ToggleSettingsPanelVisibility();
