@@ -47,7 +47,6 @@ public class EnemyProjectileScript : MonoBehaviour
             if (EventManager.playerHealth ==0) //player dies in three hits, work in progress
             {
 
-                Debug.Log("game over");
                 
                 Destroy(snowballHit.gameObject);//player dies
             }

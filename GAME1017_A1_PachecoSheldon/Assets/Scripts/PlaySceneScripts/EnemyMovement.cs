@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private float nextSnowballTime;
     void Start()
     {
+        snowmanSpawner = FindObjectOfType<SnowmanSpawner>();
         nextSnowballTime = Time.time + snowballCooldown; //initiates snowball cooldown
     }
     void Update()

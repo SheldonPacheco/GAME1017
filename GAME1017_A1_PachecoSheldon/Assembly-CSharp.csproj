@@ -65,12 +65,14 @@
     <Compile Include="Assets\Scripts\PlaySceneScripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\SnowmanSpawner.cs" />
-    <Compile Include="Assets\Scripts\FailedSceneScripts\FailedScreenManager.cs" />
+    <Compile Include="Assets\Scripts\FailedSceneScripts\RestartButton.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\EnemyProjectileScript.cs" />
     <Compile Include="Assets\Scripts\TitleSceneScripts\InstructionsButton.cs" />
     <Compile Include="Assets\Scripts\TitleSceneScripts\PlayButton.cs" />
     <Compile Include="Assets\Scripts\MainManagerScripts\MainManagerLoad.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\TreeSpawner.cs" />
+    <Compile Include="Assets\Scripts\FailedSceneScripts\MainMenuButton.cs" />
+    <Compile Include="Assets\Scripts\TitleSceneScripts\SettingsPanel.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\ScrollingBackgroundScript.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\PlayerProjectileScript.cs" />
   </ItemGroup>

@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class MainManagerLoad : MonoBehaviour
 {
-    public GameObject ManagerOfAllThings;
     public GameObject PlayButton;
     public GameObject InstructionsButton;
     public GameObject titleScreen;
@@ -17,12 +16,11 @@ public class MainManagerLoad : MonoBehaviour
     public Sprite instructionsHoverSprite;
 
     float instructionsTransparency = 1.0f; //1.0 = 0% translucent | 0.1 = 90% translucent
-
+    public static MainManagerLoad Instance { get; private set; }
     void Start()
     {
-        GameObject ManagerOfAllThingsInstance = Instantiate(ManagerOfAllThings);
-        DontDestroyOnLoad(ManagerOfAllThingsInstance);
-        
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
         titleScreenSpriteRenderer = titleScreen.GetComponent<SpriteRenderer>();
         titleScreenBackground = titleScreenSpriteRenderer.sprite;
     }

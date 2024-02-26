@@ -11,11 +11,12 @@ public class ScrollingBackgroundScript : MonoBehaviour
     public float sceneEndX = -7.22f;
     public float resetX = -7.0f; //end of level, then go backwards
     public float imageLength = 22.40287f;
-
+    public GameObject Player;
     void Start()
     {
         backgroundPosition = transform.position.x;
         originalPosition = backgroundPosition;
+        Player.SetActive(true);
     }
 
     void Update()

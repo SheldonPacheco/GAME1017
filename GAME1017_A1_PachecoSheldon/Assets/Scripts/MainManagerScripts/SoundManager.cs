@@ -1,11 +1,9 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    
     public AudioSource musicSource;
     public AudioSource soundFXSource;
 
@@ -13,137 +11,116 @@ public class SoundManager : MonoBehaviour
     public AudioClip deathMusic;
     public AudioClip snowballHitSound;
     public AudioClip powerfulSoundBallSound;
-    public AudioClip deathSound;
-
-    public GameObject settingsPanel;
-    public static GameObject currentSettingsPanel;
+    public AudioClip buttonPress;
 
     public Slider masterVolumeSlider;
-    public Slider soundFXVolumeSlider;
-    public Slider musicVolumeSlider;
+    public Slider MusicVolumeSlider;
+    public Slider SFXVolumeSlider;
 
     public TMP_Text masterVolumeText;
-    public TMP_Text soundFXVolumeText;
-    public TMP_Text musicVolumeText;
+    public TMP_Text MusicVolumeText;
+    public TMP_Text SFXVolumeText;
 
-    public float masterVolume = 0.0f;
+    public static GameObject settingsPanel;
+    private float masterVolume = 0.0f;
+    public static SoundManager Instance { get; private set; }
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        settingsPanel = GameObject.Find("SettingsPanel");
+        SpriteRenderer panelSpriteRenderer = settingsPanel.GetComponent<SpriteRenderer>();
+        Color panelColor = panelSpriteRenderer.color;
+        panelColor.a = 0.8f;
+        panelSpriteRenderer.color = panelColor;
+        
+        masterVolume = 1.0f;
+        soundFXSource.volume = 0.3f;
+        musicSource.volume = 0.4f;
+        InitializeSettingsPanel();
+    }
+
     void Start()
     {
+
         
-        
+
     }
 
-    void PlayMusic()
-    {
-            
-    }
     void Update()
-    {  
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-            if (MainManagerLoad.currentInstructionsPanel == null)
-            {
-                ToggleSettingsPanel();
-            }
-            }
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                DestroySettingsPanel();
-            }
-        
-    }
-
-    void ToggleSettingsPanel()
     {
-        if (currentSettingsPanel == null)
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            
-            InitializeSettingsPanel();
-            
+            if (InstructionsButton.currentInstructionsPanel == null)
+            {
+                Time.timeScale = 0f;
+                ToggleSettingsPanelVisibility();
+            }
         }
-        else
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            DestroySettingsPanel();
+            if (settingsPanel != null && settingsPanel.activeSelf)
+            {
+                Time.timeScale = 1f;
+                ToggleSettingsPanelVisibility();
+            }
         }
     }
 
-    void DestroySettingsPanel()
+    void ToggleSettingsPanelVisibility()
     {
-        if (currentSettingsPanel != null)
-        {
-            Destroy(currentSettingsPanel);
-            currentSettingsPanel = null;
-            
-        }
+          settingsPanel.SetActive(!settingsPanel.activeSelf);
+
     }
 
     void InitializeSettingsPanel()
     {
-        currentSettingsPanel = Instantiate(settingsPanel, Vector3.zero, Quaternion.identity);
-
-        
-        masterVolumeSlider = GetMasterVolumeSlider();
-        soundFXVolumeSlider = GetSFXVolumeSlider();
-        musicVolumeSlider = GetMusicVolumeSlider();
-
-        masterVolumeText = GetMasterVolumeText();
-        soundFXVolumeText = GetSFXVolumeText();
-        musicVolumeText = GetMusicVolumeText();
-
-        GetMasterVolumeSlider().value = masterVolume = soundFXSource.volume = musicSource.volume;
-        GetMusicVolumeSlider().value = musicSource.volume;
-        GetSFXVolumeSlider().value = soundFXSource.volume;
-
-        soundFXVolumeText.text = soundFXSource.volume.ToString("F2");
-        musicVolumeText.text = musicSource.volume.ToString("F2");
-        masterVolumeText.text = masterVolume.ToString("F2");
-
+       masterVolumeSlider.value = masterVolume;
+       SFXVolumeSlider.value = 0.5f;
+       MusicVolumeSlider.value = 0.5f;
+       SFXVolumeText.text = soundFXSource.volume.ToString("F2");
+       MusicVolumeText.text = musicSource.volume.ToString("F2");
+       masterVolumeText.text = masterVolume.ToString("F2");
 
     }
+
     public void AdjustSFXVolume(float value)
     {
         soundFXSource.volume = value * masterVolume;
-        soundFXVolumeText.text = soundFXSource.volume.ToString("F2");
+        SFXVolumeText.text = soundFXSource.volume.ToString("F2");
     }
+
     public void AdjustMusicVolume(float value)
     {
         musicSource.volume = value * masterVolume;
-        musicVolumeText.text = musicSource.volume.ToString("F2");
+        MusicVolumeText.text = musicSource.volume.ToString("F2");
     }
+
     public void AdjustMasterVolume(float value)
     {
         masterVolume = soundFXSource.volume = musicSource.volume = value;
+        SFXVolumeText.text = masterVolume.ToString("F2");
+        MusicVolumeText.text = masterVolume.ToString("F2");
         masterVolumeText.text = masterVolume.ToString("F2");
-
     }
-    public Canvas GetCanvasChildren()
+    public void PlaySFX(AudioClip audioClip)
     {
-        return currentSettingsPanel.GetComponentInChildren<Canvas>();
+        soundFXSource.PlayOneShot(audioClip);
     }
-    public Slider GetMasterVolumeSlider()
+    public void PlayMusic(AudioClip audioClip)
     {
-        return GetCanvasChildren().transform.Find("MasterVolumeSlider").GetComponent<Slider>();
+        musicSource.PlayOneShot(audioClip);
+        musicSource.loop = true;
     }
-    public Slider GetSFXVolumeSlider()
+    public void StopMusic(AudioClip audioClip)
     {
-        return GetCanvasChildren().transform.Find("SFXVolumeSlider").GetComponent<Slider>();
-    }
-    public Slider GetMusicVolumeSlider()
-    {
-        return GetCanvasChildren().transform.Find("MusicVolumeSlider").GetComponent<Slider>();
-    }
-    public TMP_Text GetMasterVolumeText()
-    {
-        return GetMasterVolumeSlider().transform.Find("MasterVolumeText").GetComponent<TMP_Text>();
-    }
-    public TMP_Text GetSFXVolumeText()
-    {
-        return GetSFXVolumeSlider().transform.Find("SFXVolumeText").GetComponent<TMP_Text>();
+        musicSource.Stop();
     }
 
-    public TMP_Text GetMusicVolumeText()
-    {
-        return GetMusicVolumeSlider().transform.Find("MusicVolumeText").GetComponent<TMP_Text>();
-    }
 }

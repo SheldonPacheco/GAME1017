@@ -12,51 +12,80 @@ public class SnowmanSpawner : MonoBehaviour
     public float maxSpeed = 5f;
     public float enemyProjectileSpeed = 5f;
     public int maxSnowmen = 3;
+    public Transform playerTransform;
+    public static Dictionary<GameObject, float> distancesToPlayer = new Dictionary<GameObject, float>();
+
     void Start()
     {
-        
-        InvokeRepeating("SpawnSnowman", 0f, spawnInterval);//spawns snowman
-       
+        InvokeRepeating("SpawnSnowman", 0f, spawnInterval);
+    }
+
+    private void Update()
+    {
+        if (playerTransform != null)
+        {
+            List<GameObject> snowmenToRemove = new List<GameObject>();
+
+            foreach (var snowman in activeSnowmen)
+            {
+                if (snowman == null)
+                {
+                    // The snowman has been destroyed, remove it from the distancesToPlayer dictionary
+                    snowmenToRemove.Add(snowman);
+                    continue;
+                }
+
+                float distanceToPlayer = Vector2.Distance(playerTransform.position, snowman.transform.position);
+
+                if (distancesToPlayer.ContainsKey(snowman))
+                {
+                    // If the snowman is already in the dictionary, update its distance
+                    distancesToPlayer[snowman] = distanceToPlayer;
+                }
+                else
+                {
+                    // If the snowman is not in the dictionary, add it
+                    distancesToPlayer.Add(snowman, distanceToPlayer);
+                }
+            }
+
+            // Remove the destroyed snowmen from the distancesToPlayer dictionary
+            foreach (var snowmanToRemove in snowmenToRemove)
+            {
+                distancesToPlayer.Remove(snowmanToRemove);
+            }
+        }
     }
 
     void SpawnSnowman()
     {
-        
-        if (activeSnowmen.Count < maxSnowmen)//makes sure only the set amount gets spawned at a time
+        if (activeSnowmen.Count < maxSnowmen)
         {
-            
-            GameObject snowman = GetSnowmanFromPool();//spawns a new snowman from the pool if available
+            GameObject snowman = GetSnowmanFromPool();
 
-            //if the pool is empty, instantiate a new snowman
             if (snowman == null)
             {
-                
                 snowman = Instantiate(enemySnowman, GetRandomSpawnPosition(), Quaternion.identity);
                 snowman.SetActive(true);
             }
 
-            
             snowman.SetActive(true);
 
-            
-            Rigidbody2D snowmanRb = snowman.GetComponent<Rigidbody2D>();// reset the snowman's velocity, so they dont spawn at crazy speeds
+            Rigidbody2D snowmanRb = snowman.GetComponent<Rigidbody2D>();
             if (snowmanRb != null)
             {
-                snowmanRb.velocity = Vector2.left * maxSpeed;
             }
 
+            activeSnowmen.Add(snowman);          
+            distancesToPlayer.Add(snowman, 0f);
             
-            activeSnowmen.Add(snowman);//adds the snowman to the list of active snowmen
-
         }
     }
 
     GameObject GetSnowmanFromPool()
     {
-        
-        if (poolOfSnowmen.Count > 0)//checks if there are snowmen available in the pool and gets a snowman from pool
+        if (poolOfSnowmen.Count > 0)
         {
-            
             GameObject snowman = poolOfSnowmen[0];
             poolOfSnowmen.RemoveAt(0);
             return snowman;
@@ -67,34 +96,29 @@ public class SnowmanSpawner : MonoBehaviour
 
     public void MoveToPool(GameObject snowman)
     {
-        
-        if (activeSnowmen.Contains(snowman))//checks if the snowman is in the active list before moving to the pool and removes from list
+        if (activeSnowmen.Contains(snowman))
         {
-            
             activeSnowmen.Remove(snowman);
 
-            
-            if (activeSnowmen.Count + poolOfSnowmen.Count < maxSnowmen)//checks to make sure lists dont get overloaded
+            if (activeSnowmen.Count + poolOfSnowmen.Count < maxSnowmen)
             {
-                
-                snowman.transform.position = GetRandomSpawnPosition();//reset snowman position before moving it to the pool
-
-                
-                Rigidbody2D snowmanRb = snowman.GetComponent<Rigidbody2D>();//reset snowman velocity so it doesnt respawn at crazy speeds
+                snowman.transform.position = GetRandomSpawnPosition();
+                Rigidbody2D snowmanRb = snowman.GetComponent<Rigidbody2D>();
                 if (snowmanRb != null)
                 {
                     snowmanRb.velocity = Vector2.left * maxSpeed;
                 }
 
-                
-                snowman.SetActive(false); //deactives the snowman and adds it to the pool for later respawn
+                snowman.SetActive(false);
                 poolOfSnowmen.Add(snowman);
+
+                // Remove the corresponding distance from the dictionary
+                distancesToPlayer.Remove(snowman);
             }
-            
         }
         else
         {
-            if (poolOfSnowmen.Count < maxSnowmen) //handles snowman going off screen
+            if (poolOfSnowmen.Count < maxSnowmen)
             {
                 snowman.SetActive(false);
                 poolOfSnowmen.Add(snowman);

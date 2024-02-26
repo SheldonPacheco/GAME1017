@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - ChristmasTree
   - snowballExplosion
+  - PowerfulSnowball
+  - LifePickup
   layers:
   - Default
   - TransparentFX

@@ -5,48 +5,58 @@ using UnityEngine.SceneManagement;
 
 public class PlayButton : MonoBehaviour
 {
-    public MainManagerLoad mainManagerLoad;
-    private void Update()
+    public Sprite playHoverSprite;
+    private SpriteRenderer titleScreenSpriteRenderer;
+    private Sprite titleScreenBackground;
 
+    void Start()
     {
-        if (SoundManager.currentSettingsPanel != null)
-        {
+        SoundManager.Instance.StopMusic(SoundManager.Instance.deathMusic);
+        SoundManager.Instance.PlayMusic(SoundManager.Instance.gameMusic);
+        
+        titleScreenSpriteRenderer = GameObject.Find("TitleScreen").GetComponent<SpriteRenderer>(); // Replace "TitleScreen" with the actual name of your title screen object.
+        titleScreenBackground = titleScreenSpriteRenderer.sprite;
+    }
 
+    void Update()
+    {
+        if (SoundManager.settingsPanel.active == true || InstructionsButton.currentInstructionsPanel != null)
+        {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
         else
         {
-
             gameObject.layer = LayerMask.NameToLayer("Default");
         }
-        if (MainManagerLoad.currentInstructionsPanel!=null) 
+
+        if (Input.GetMouseButtonDown(0))
         {
-
-            gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-
-        }
-        else
-        {
-
-            gameObject.layer = LayerMask.NameToLayer("Default");
-
-        }
-
-    }
-    void OnMouseEnter()
-    {
-        mainManagerLoad.PlayButtonHoverEnter();
-    }
-    void OnMouseExit()
-    {
-        mainManagerLoad.OnHoverExit();
-    }
-    void OnMouseDown()
-    {
-        if (SoundManager.currentSettingsPanel == null&& MainManagerLoad.currentInstructionsPanel == null)
-        {
-            SceneManager.LoadScene("PlayScene");
+            MouseClick();
         }
         
+    }
+
+    void OnMouseEnter()
+    {
+        titleScreenSpriteRenderer.sprite = playHoverSprite;
+    }
+
+    void OnMouseExit()
+    {
+        titleScreenSpriteRenderer.sprite = titleScreenBackground;
+    }
+    void MouseClick()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
+
+        if (hitCollider != null && hitCollider.gameObject == gameObject)
+        {
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonPress);
+            if (SoundManager.settingsPanel.active == false)
+            {
+                SceneManager.LoadScene("PlayScene");
+            }
+        }
     }
 }
