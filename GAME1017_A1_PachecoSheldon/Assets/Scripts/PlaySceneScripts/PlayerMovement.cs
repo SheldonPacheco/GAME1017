@@ -8,13 +8,14 @@ public class PlayerMovement : MonoBehaviour
     public GameObject playerSprite;
     public GameObject snowballProjectile;
     private Animator animator;
-    public TreeSpawner ChristmasTreeSpawner;
+    public static TreeSpawner christmasTreeSpawner;
     public GameObject treeExplode;
     bool powerfulSnowball = false;
     static public float powerfulSnowballTimer = 0f;
     void Start()
     {
-        animator = playerSprite.GetComponent<Animator>();  
+        animator = playerSprite.GetComponent<Animator>();
+        christmasTreeSpawner = FindObjectOfType<TreeSpawner>();
     }
 
 
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if(powerfulSnowball==true)
         {
             powerfulSnowballTimer -= Time.deltaTime;
-            Debug.Log("Powerful Snowball Timer: " + powerfulSnowballTimer);
+
             if (powerfulSnowballTimer <= 0f)
             {
                 powerfulSnowball = false;
@@ -138,22 +139,24 @@ public class PlayerMovement : MonoBehaviour
 
             //explodes tree
             GameObject treeExplosion = Instantiate(treeExplode, collison.transform.position, Quaternion.identity);
-            treeExplosion.SetActive(true);
+            
             Destroy(treeExplosion, 0.5f);
 
-            ChristmasTreeSpawner.MoveToPool(collison.gameObject);
+            christmasTreeSpawner.MoveToPool(collison.gameObject);
         }
 
         if (collison.CompareTag("PowerfulSnowball"))
         {
             powerfulSnowballTimer+=15f;
             powerfulSnowball = true;
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.powerfulSoundBallSound);
             Destroy(collison.gameObject);
 
         }
         if (collison.CompareTag("LifePickup"))
         {
-
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.powerfulSoundBallSound);
+            EventManager.playerHealth++;
             Destroy(collison.gameObject);
 
         }

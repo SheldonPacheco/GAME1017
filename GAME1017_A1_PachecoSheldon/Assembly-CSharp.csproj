@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\PlaySceneScripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\SnowmanSpawner.cs" />
+    <Compile Include="Assets\Scripts\PlaySceneScripts\StarExplosion.cs" />
     <Compile Include="Assets\Scripts\FailedSceneScripts\RestartButton.cs" />
     <Compile Include="Assets\Scripts\PlaySceneScripts\EnemyProjectileScript.cs" />
     <Compile Include="Assets\Scripts\TitleSceneScripts\InstructionsButton.cs" />

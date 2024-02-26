@@ -14,7 +14,7 @@ public class MainMenuButton : MonoBehaviour
     void Update()
     {
         
-        if (SoundManager.settingsPanel.active == true)
+        if (SoundManager.settingsPanel.activeSelf == true)
         {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
@@ -39,8 +39,9 @@ public class MainMenuButton : MonoBehaviour
         if (hitCollider != null && hitCollider.gameObject == gameObject)
         {
             SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonPress);
-            if (SoundManager.settingsPanel.active == false)
+            if (SoundManager.settingsPanel.activeSelf == false)
             {
+                PlayerMovement.powerfulSnowballTimer = 0;
                 EventManager.playerHealth = 4;
                 EventManager.playerScore = 0;
                 SceneManager.LoadScene("TitleScene");

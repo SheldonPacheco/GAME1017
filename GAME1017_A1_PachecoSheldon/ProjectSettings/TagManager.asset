@@ -11,6 +11,7 @@ TagManager:
   - snowballExplosion
   - PowerfulSnowball
   - LifePickup
+  - SnowballStarExplode
   layers:
   - Default
   - TransparentFX

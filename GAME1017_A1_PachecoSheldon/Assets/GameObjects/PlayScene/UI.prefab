@@ -31,10 +31,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3780948451388419288}
-  - {fileID: 8217755813632473545}
-  - {fileID: 4248229772803486366}
   - {fileID: 8292399398603758332}
+  - {fileID: 4248229772803486366}
+  - {fileID: 8217755813632473545}
+  - {fileID: 3780948451388419288}
   - {fileID: 3110929540690929216}
   - {fileID: 1292110916654057066}
   - {fileID: 7854952119172492685}
@@ -127,7 +127,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1683472020306685330, guid: 4b1af48424f41fa43ac11b051bae5f8c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2543311517106524725, guid: 4b1af48424f41fa43ac11b051bae5f8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,6 +167,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2543311517106524725, guid: 4b1af48424f41fa43ac11b051bae5f8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845294427930944093, guid: 4b1af48424f41fa43ac11b051bae5f8c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8845294427930944093, guid: 4b1af48424f41fa43ac11b051bae5f8c, type: 3}
@@ -232,12 +236,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6063423177886340038, guid: 53c76594609af3a438d6582c8fae5cf6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063423177886340038, guid: 53c76594609af3a438d6582c8fae5cf6, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7405493511659042244, guid: 53c76594609af3a438d6582c8fae5cf6, type: 3}
       propertyPath: m_Name
       value: Life2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7405493511659042244, guid: 53c76594609af3a438d6582c8fae5cf6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -466,6 +478,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3781004321483470405}
     m_Modifications:
     - target: {fileID: 3284930233694925411, guid: 3b967721a303a2d418e4b21197e67a5f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284930233694925411, guid: 3b967721a303a2d418e4b21197e67a5f, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
@@ -515,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4266278796202919659, guid: 3b967721a303a2d418e4b21197e67a5f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -538,6 +554,14 @@ PrefabInstance:
     - target: {fileID: 3025683987831785890, guid: 0660eca5f79f45141b47ec8e6c5d50b1, type: 3}
       propertyPath: m_Name
       value: PowerfulSnowballTimer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3025683987831785890, guid: 0660eca5f79f45141b47ec8e6c5d50b1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7933523403580626509, guid: 0660eca5f79f45141b47ec8e6c5d50b1, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8996320347257068249, guid: 0660eca5f79f45141b47ec8e6c5d50b1, type: 3}
       propertyPath: m_Pivot.x
@@ -747,6 +771,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Life4
       objectReference: {fileID: 0}
+    - target: {fileID: 5565790856448302418, guid: 0b90fba70de08954786d5dbfe85a4108, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7247395603546385433, guid: 0b90fba70de08954786d5dbfe85a4108, type: 3}
       propertyPath: m_LocalPosition.x
       value: -507.23
@@ -785,6 +813,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7247395603546385433, guid: 0b90fba70de08954786d5dbfe85a4108, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8473341672363919185, guid: 0b90fba70de08954786d5dbfe85a4108, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8473341672363919185, guid: 0b90fba70de08954786d5dbfe85a4108, type: 3}
@@ -850,12 +882,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4605041573131016180, guid: 5427c645e04cf154c9353307d3331ff0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605041573131016180, guid: 5427c645e04cf154c9353307d3331ff0, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6976683188903049237, guid: 5427c645e04cf154c9353307d3331ff0, type: 3}
       propertyPath: m_Name
       value: Life3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6976683188903049237, guid: 5427c645e04cf154c9353307d3331ff0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -921,6 +961,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683074817894268073, guid: 13dee22dba80f2c459470f71c87ec820, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097711119256382027, guid: 13dee22dba80f2c459470f71c87ec820, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5097711119256382027, guid: 13dee22dba80f2c459470f71c87ec820, type: 3}
@@ -986,6 +1030,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663565565417841311, guid: 7ab6c946f969d044e95a73d3b7b2fc16, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663565565417841311, guid: 7ab6c946f969d044e95a73d3b7b2fc16, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
@@ -995,7 +1043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7849171411659135322, guid: 7ab6c946f969d044e95a73d3b7b2fc16, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1056,12 +1104,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4869343496939970719, guid: df581c1ffc936f44a937dd15f767644a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4869343496939970719, guid: df581c1ffc936f44a937dd15f767644a, type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8219609078305534373, guid: df581c1ffc936f44a937dd15f767644a, type: 3}
       propertyPath: m_Name
       value: Life1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219609078305534373, guid: df581c1ffc936f44a937dd15f767644a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

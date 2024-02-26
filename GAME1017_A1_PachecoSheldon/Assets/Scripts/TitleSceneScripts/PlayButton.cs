@@ -20,7 +20,7 @@ public class PlayButton : MonoBehaviour
 
     void Update()
     {
-        if (SoundManager.settingsPanel.active == true || InstructionsButton.currentInstructionsPanel != null)
+        if (SoundManager.settingsPanel.activeSelf == true || InstructionsButton.currentInstructionsPanel != null)
         {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
@@ -53,8 +53,9 @@ public class PlayButton : MonoBehaviour
         if (hitCollider != null && hitCollider.gameObject == gameObject)
         {
             SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonPress);
-            if (SoundManager.settingsPanel.active == false)
+            if (SoundManager.settingsPanel.activeSelf == false)
             {
+                
                 SceneManager.LoadScene("PlayScene");
             }
         }

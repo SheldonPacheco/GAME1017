@@ -6,15 +6,12 @@ using UnityEngine;
 
 public class PlayerProjectileScript : MonoBehaviour
 {
-    public SnowmanSpawner snowmanSpawner;
+    public static SnowmanSpawner snowmanSpawner;
 
     public GameObject snowballExplode;
     public GameObject snowmanExplode;
 
-
-    public GameObject powerfulSnowballExplode;
-    public GameObject powerfulSnowmanExplode;
-
+    public GameObject powerfulSnowball;
     public Sprite PowerfulSnowballSprite;
 
     public SpriteRenderer spriteRenderer;
@@ -58,7 +55,7 @@ public class PlayerProjectileScript : MonoBehaviour
             {
                 //explodes snowball
                 GameObject snowballExplosion = Instantiate(snowballExplode, transform.position, Quaternion.identity);
-
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.snowballHitSound);
                 Destroy(snowballExplosion, 0.5f);
 
                 //20pts for enemy snowball
@@ -66,19 +63,7 @@ public class PlayerProjectileScript : MonoBehaviour
                 Destroy(gameObject);
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.snowballHitSound);
                 Destroy(snowballHit.gameObject);
-            } else if (PlayerMovement.powerfulSnowballTimer > 0)
-            {
-                //explodes snowball
-                GameObject powerfulSnowballExplosion = Instantiate(powerfulSnowballExplode, transform.position, Quaternion.identity);
-
-                Destroy(powerfulSnowballExplosion, 0.5f);
-
-                //20pts for enemy snowball
-                EventManager.playerScore += 20;
-                Destroy(gameObject);
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.snowballHitSound);
-                Destroy(snowballHit.gameObject);
-            }
+            } 
 
         }
         if (snowballHit.CompareTag("Enemy"))
@@ -90,29 +75,14 @@ public class PlayerProjectileScript : MonoBehaviour
 
                 //explodes snowball
                 GameObject snowballExplosion = Instantiate(snowballExplode, transform.position, Quaternion.identity);
-
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.snowballHitSound);
                 Destroy(snowballExplosion, 0.5f);
 
                 //explodes snowman
                 GameObject snowmanExplosion = Instantiate(snowmanExplode, snowballHit.transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.snowballHitSound);
                 Destroy(snowmanExplosion, 0.5f);
-            }
-            else if (PlayerMovement.powerfulSnowballTimer > 0)
-            {
-                //50pts for enemy
-                EventManager.playerScore += 50;
-
-                //explodes snowball
-                GameObject powerfulSnowballExplosion = Instantiate(powerfulSnowballExplode, transform.position, Quaternion.identity);
-
-                Destroy(powerfulSnowballExplosion, 0.5f);
-
-                //explodes snowman
-                GameObject powerfulSnowmanExplosion = Instantiate(powerfulSnowmanExplode, snowballHit.transform.position, Quaternion.identity);
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.snowballHitSound);
-                Destroy(powerfulSnowmanExplosion, 0.5f);
-            }
+            }         
 
 
             chanceToDropPowerfulSnowball = Random.Range(1, 10);
@@ -120,7 +90,8 @@ public class PlayerProjectileScript : MonoBehaviour
             {
                 Instantiate(PowerfulSnowballPickup, snowballHit.transform.position, Quaternion.identity);
             }
-            if (PlayerMovement.powerfulSnowballTimer >0)
+
+            if (PlayerMovement.powerfulSnowballTimer > 0)
             {
                 SpawnSnowballStar(snowballHit.transform.position);
             }
@@ -130,10 +101,6 @@ public class PlayerProjectileScript : MonoBehaviour
             if (dropLife == chanceToDropLife)
             {
                 Instantiate(LifePickup, snowballHit.transform.position, Quaternion.identity);
-            }
-            if (PlayerMovement.powerfulSnowballTimer > 0)
-            {
-                SpawnSnowballStar(snowballHit.transform.position);
             }
 
             snowmanSpawner.MoveToPool(snowballHit.gameObject);
@@ -154,12 +121,10 @@ public class PlayerProjectileScript : MonoBehaviour
             Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             Vector3 spawnPosition = centerPosition + new Vector3(direction.x, direction.y, 0f);
 
-            GameObject snowball = Instantiate(gameObject, spawnPosition, Quaternion.identity);
+            GameObject snowball = Instantiate(powerfulSnowball, spawnPosition, Quaternion.identity);
             Rigidbody2D snowballSpeed = snowball.GetComponent<Rigidbody2D>();
 
             snowballSpeed.velocity = direction * 10.0f; 
-
-
 
             Destroy(snowball, 3.0f);
         }

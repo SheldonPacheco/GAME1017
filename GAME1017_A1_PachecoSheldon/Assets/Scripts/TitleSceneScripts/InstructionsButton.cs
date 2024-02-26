@@ -40,7 +40,7 @@ public class InstructionsButton : MonoBehaviour
     void OnMouseDown()
     {
         SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonPress);
-        if (SoundManager.settingsPanel.active == false)
+        if (SoundManager.settingsPanel.activeSelf == false)
         {
             ToggleInstructionsPanel();
         }
@@ -71,7 +71,7 @@ public class InstructionsButton : MonoBehaviour
 
     private void HandleButtonLayer()
     {
-        if (SoundManager.settingsPanel.active == true || currentInstructionsPanel != null)
+        if (SoundManager.settingsPanel.activeSelf == true || currentInstructionsPanel != null)
         {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }

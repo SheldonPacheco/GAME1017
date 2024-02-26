@@ -354,17 +354,9 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1977774383}
-    - target: {fileID: 827378901482633588, guid: e1a2bbc97d77de5498b85f126983b45e, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2717769260150571890, guid: e1a2bbc97d77de5498b85f126983b45e, type: 3}
       propertyPath: m_Name
       value: SettingsPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 2717769260150571890, guid: e1a2bbc97d77de5498b85f126983b45e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3010418219524674859, guid: e1a2bbc97d77de5498b85f126983b45e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -390,10 +382,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1977774383}
-    - target: {fileID: 8726636969422470938, guid: e1a2bbc97d77de5498b85f126983b45e, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9017034358993554344, guid: e1a2bbc97d77de5498b85f126983b45e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -782,5 +770,5 @@ SceneRoots:
   - {fileID: 1101318845}
   - {fileID: 479481235}
   - {fileID: 1920609201}
-  - {fileID: 779758186}
   - {fileID: 1535021828}
+  - {fileID: 779758186}

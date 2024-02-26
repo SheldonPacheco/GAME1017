@@ -34,15 +34,13 @@ public class SoundManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         settingsPanel = GameObject.Find("SettingsPanel");
-        SpriteRenderer panelSpriteRenderer = settingsPanel.GetComponent<SpriteRenderer>();
-        Color panelColor = panelSpriteRenderer.color;
-        panelColor.a = 0.8f;
-        panelSpriteRenderer.color = panelColor;
+
         
         masterVolume = 1.0f;
         soundFXSource.volume = 0.3f;
         musicSource.volume = 0.4f;
         InitializeSettingsPanel();
+
     }
 
     void Start()
@@ -76,7 +74,14 @@ public class SoundManager : MonoBehaviour
     void ToggleSettingsPanelVisibility()
     {
           settingsPanel.SetActive(!settingsPanel.activeSelf);
-
+        if (settingsPanel.activeSelf)
+        {
+            
+            SpriteRenderer panelSpriteRenderer = settingsPanel.transform.Find("Background").GetComponent<SpriteRenderer>();
+            Color panelColor = panelSpriteRenderer.color;
+            panelColor.a = 0.8f;
+            panelSpriteRenderer.color = panelColor;
+        }
     }
 
     void InitializeSettingsPanel()

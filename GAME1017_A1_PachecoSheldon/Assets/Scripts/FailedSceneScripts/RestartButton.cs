@@ -9,7 +9,7 @@ public class RestartButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SoundManager.settingsPanel.active == true)
+        if (SoundManager.settingsPanel.activeSelf == true)
         {
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
@@ -21,6 +21,8 @@ public class RestartButton : MonoBehaviour
     
         if (Input.GetMouseButtonDown(0))
         {
+            SoundManager.Instance.StopMusic(SoundManager.Instance.deathMusic);
+            SoundManager.Instance.PlayMusic(SoundManager.Instance.gameMusic);
             MouseClick();
         }
     }
@@ -32,11 +34,11 @@ public class RestartButton : MonoBehaviour
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
 
         if (hitCollider != null && hitCollider.gameObject == gameObject)
-        {
-            Debug.Log("Restart button clicked!");
+        {          
             SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonPress);
-            if (SoundManager.settingsPanel.active == false)
+            if (SoundManager.settingsPanel.activeSelf == false)
             {
+                PlayerMovement.powerfulSnowballTimer = 0;   
                 EventManager.playerHealth = 4;
                 EventManager.playerScore = 0;
                 SceneManager.LoadScene("PlayScene");

@@ -8,7 +8,7 @@ public class SnowmanSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> poolOfSnowmen = new List<GameObject>();
     public GameObject enemySnowman;
     public GameObject enemySnowball;
-    private float spawnInterval = 1f;
+    private float spawnInterval = 1.0f;
     public float maxSpeed = 5f;
     public float enemyProjectileSpeed = 5f;
     public int maxSnowmen = 3;
@@ -74,11 +74,16 @@ public class SnowmanSpawner : MonoBehaviour
             Rigidbody2D snowmanRb = snowman.GetComponent<Rigidbody2D>();
             if (snowmanRb != null)
             {
+                snowmanRb.velocity = Vector2.left * maxSpeed;
             }
 
-            activeSnowmen.Add(snowman);          
-            distancesToPlayer.Add(snowman, 0f);
-            
+            activeSnowmen.Add(snowman);
+
+            // Check if the snowman is already in the dictionary before adding
+            if (!distancesToPlayer.ContainsKey(snowman))
+            {
+                distancesToPlayer.Add(snowman, 0f);
+            }
         }
     }
 
@@ -130,23 +135,37 @@ public class SnowmanSpawner : MonoBehaviour
     {
         if (snowmanToRespawn != null)
         {
-           
-            snowmanToRespawn.transform.position = GetRandomSpawnPosition(); //resets the snowman position
+            snowmanToRespawn.transform.position = GetRandomSpawnPosition(); // resets the snowman position
 
+            // Check for collisions with other snowmen
+            Collider2D snowmanCollider = snowmanToRespawn.GetComponent<Collider2D>();
+            if (snowmanCollider != null)
+            {
+                foreach (var otherSnowman in activeSnowmen)
+                {
+                    if (otherSnowman != snowmanToRespawn)
+                    {
+                        Collider2D otherCollider = otherSnowman.GetComponent<Collider2D>();
+                        if (otherCollider != null && snowmanCollider.IsTouching(otherCollider))
+                        {
+                            // If there's a collision, adjust the respawn position
+                            snowmanToRespawn.transform.position = GetRandomSpawnPosition();
+                            break;
+                        }
+                    }
+                }
+            }
 
-            Rigidbody2D snowmanRb = snowmanToRespawn.GetComponent<Rigidbody2D>();//reset snowman velocity so it doesnt respawn at crazy speeds
+            Rigidbody2D snowmanRb = snowmanToRespawn.GetComponent<Rigidbody2D>();
             if (snowmanRb != null)
             {
                 snowmanRb.velocity = Vector2.left * maxSpeed;
             }
 
-            
             snowmanToRespawn.SetActive(true);
 
-           
-            activeSnowmen.Add(snowmanToRespawn);//respawns snowman and takes from pool if there
+            activeSnowmen.Add(snowmanToRespawn);
 
-            
             if (poolOfSnowmen.Contains(snowmanToRespawn))
             {
                 poolOfSnowmen.Remove(snowmanToRespawn);

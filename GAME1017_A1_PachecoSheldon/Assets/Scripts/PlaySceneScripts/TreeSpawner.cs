@@ -11,9 +11,14 @@ public class TreeSpawner : MonoBehaviour
     public float treeSpeed = 6f;
     public int maxTrees = 3;
 
-    void Start()
+    private void Start()
     {
         InvokeRepeating("SpawnTree", 0f, spawnInterval);
+    }
+
+    private void Update()
+    {
+        RespawnTrees();
     }
 
     void SpawnTree()
@@ -25,7 +30,10 @@ public class TreeSpawner : MonoBehaviour
             if (tree == null)
             {
                 tree = Instantiate(christmasTree, GetRandomSpawnPosition(), Quaternion.identity);
-                tree.SetActive(true);
+            }
+            else
+            {
+                tree.transform.position = GetRandomSpawnPosition();
             }
 
             tree.SetActive(true);
@@ -40,7 +48,7 @@ public class TreeSpawner : MonoBehaviour
         }
     }
 
-    GameObject GetTreeFromPool()
+    public GameObject GetTreeFromPool()
     {
         if (poolOfTrees.Count > 0)
         {
@@ -50,6 +58,39 @@ public class TreeSpawner : MonoBehaviour
         }
 
         return null;
+    }
+
+    void RespawnTrees()
+    {
+        // Remove trees that are beyond a certain position
+        activeTrees.RemoveAll(tree => tree.transform.position.x < -10f);
+
+        // Calculate how many more trees can be spawned
+        int treesToSpawn = maxTrees - (activeTrees.Count + poolOfTrees.Count);
+
+        for (int i = 0; i < treesToSpawn; i++)
+        {
+            GameObject tree = GetTreeFromPool();
+
+            if (tree == null)
+            {
+                tree = Instantiate(christmasTree, GetRandomSpawnPosition(), Quaternion.identity);
+            }
+            else
+            {
+                tree.transform.position = GetRandomSpawnPosition();
+            }
+
+            tree.SetActive(true);
+
+            Rigidbody2D treeRb = tree.GetComponent<Rigidbody2D>();
+            if (treeRb != null)
+            {
+                treeRb.velocity = Vector2.left * treeSpeed;
+            }
+
+            activeTrees.Add(tree);
+        }
     }
 
     public void MoveToPool(GameObject tree)
@@ -87,19 +128,5 @@ public class TreeSpawner : MonoBehaviour
         float randomY = Random.Range(-3.83f, 4.15f);
         float spawnX = 10.0f;
         return new Vector3(spawnX, randomY, 0f);
-    }
-
-    
-    void Update()
-    {
-        // checks if trees are off-screen and move them to the pool
-        float minX = Camera.main.ViewportToWorldPoint(Vector3.zero).x;
-        for (int i = activeTrees.Count - 1; i >= 0; i--)
-        {
-            if (activeTrees[i].transform.position.x < minX)
-            {
-                MoveToPool(activeTrees[i]);
-            }
-        }
     }
 }

@@ -102,9 +102,8 @@ MonoBehaviour:
   snowmanSpawner: {fileID: 0}
   snowballExplode: {fileID: 2537724036183438867, guid: 8555f91cd1e485248bd6f0955c8631ac, type: 3}
   snowmanExplode: {fileID: 7986843852591495833, guid: 40671b9380c3f5c4b9e2752c4bb63319, type: 3}
-  powerfulSnowballExplode: {fileID: 7010928629656753405, guid: ebb95ab8afd8365419c1bf8f13c70ed9, type: 3}
-  powerfulSnowmanExplode: {fileID: 1398164683111993098, guid: 224a9cee79f9879438538eb8566e4ae5, type: 3}
-  PowerfulSnowballSprite: {fileID: 0}
+  powerfulSnowball: {fileID: 8333927982925681989, guid: ccf2c5dc9ad60d04b803b6e64d235f67, type: 3}
+  PowerfulSnowballSprite: {fileID: 21300000, guid: 1502b52f0a08c304fb86beb1375f47c8, type: 3}
   spriteRenderer: {fileID: 8862722321966366810}
   snowballSprite: {fileID: 21300000, guid: 40dc99525e6adf1428346fdf641db701, type: 3}
   PowerfulSnowballPickup: {fileID: 2094012331294049797, guid: 641e8460764bf4149a6af0c2fba8c3f3, type: 3}
