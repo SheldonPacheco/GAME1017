@@ -35,6 +35,7 @@ public class Game : MonoBehaviour
         SOMA.AddSound("Wings", Resources.Load<AudioClip>("Wings"), SoundManager.SoundType.SOUND_MUSIC);
 
         SOMA.PlayMusic("Title");
+
     }
 
     public void OnStartClicked()

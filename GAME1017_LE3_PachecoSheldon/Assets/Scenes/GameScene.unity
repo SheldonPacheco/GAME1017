@@ -403,6 +403,10 @@ PrefabInstance:
       propertyPath: m_LinearDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6543332479888173888, guid: 09247644d15f7804f9b8c909abf088b2, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6617159782856742166, guid: 09247644d15f7804f9b8c909abf088b2, type: 3}
       propertyPath: rotSpeed
       value: -225
@@ -413,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6617159782856742166, guid: 09247644d15f7804f9b8c909abf088b2, type: 3}
       propertyPath: bulletForce
-      value: 750
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6617159782856742166, guid: 09247644d15f7804f9b8c909abf088b2, type: 3}
       propertyPath: bulletPrefab
@@ -421,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 2970872166208379879, guid: 5b9f2e2b66a69f8408f8627a6fead228, type: 3}
     - target: {fileID: 6617159782856742166, guid: 09247644d15f7804f9b8c909abf088b2, type: 3}
       propertyPath: bulletLifespan
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -43,6 +43,7 @@ CircleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4955358578561507649}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -66,9 +67,9 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
   m_Radius: 0.5
 --- !u!50 &1817956263181991425
 Rigidbody2D:
@@ -111,11 +112,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tint: {r: 0, g: 0, b: 0, a: 0}
   direction: {x: 0, y: 0}
-  rotation: 0
+  rotation: 15
   minRotation: 10
   maxRotation: 30
   tintAmount: 0.5
-  data: {fileID: 11400000, guid: f91e110ff3c7dfa45a29ab42c23bc4a1, type: 2}
+  data: {fileID: 11400000, guid: f8cd7a8867ab57044a33fb554c7dd0ee, type: 2}
 --- !u!1 &8052740727697339977
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +166,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletScript : MonoBehaviour
 {
-       
+    
+    int index = 0;
+  
+
     void Update()
     {
-        // Wrap bullet to other side of screen.
+        
         if (transform.position.x < -8.5f)
         {
             transform.position = new Vector2(8.5f, transform.position.y);
@@ -30,14 +35,13 @@ public class BulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Asteroid")
         {
+            List<GameObject> asteroids = AsteroidManager.Instance.GetAsteroids();
+            index = asteroids.IndexOf(collision.gameObject);
+            
+            AsteroidManager.Instance.DeleteAsteroid(index);
+            
             Destroy(gameObject);
-            // When an asteroid gets destroyed, make smaller chunks two times. For LE3.
-            //
-            //
-            //
-            int index = AsteroidManager.Instance.GetAsteroids().IndexOf(collision.gameObject);
-            if (index != -1)
-                AsteroidManager.Instance.DeleteAsteroid(index); // Just two lines for readability.
+            
         }
     }
 }

@@ -9,17 +9,17 @@ public class SoundManager
         SOUND_MUSIC
     }
 
-    public static SoundManager Instance { get; private set; } // Static object of the class.
+    public static SoundManager Instance { get; private set; } 
 
     private Dictionary<string, AudioClip> sfxDictionary = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> musicDictionary = new Dictionary<string, AudioClip>();
     private AudioSource sfxSource;
     private AudioSource musicSource;
     private float volumeMaster = 1.0f;
-    private float volumeSfx = 1.0f;
-    private float volumeMusic = 0.25f;
+    private float volumeSfx = 1.0f; 
+    private float volumeMusic = 0.25f; 
 
-    // Initialize the SoundManager. I just put this functionality here instead of in the static constructor.
+   
     public void Initialize(GameObject go)
     {
         sfxSource = go.AddComponent<AudioSource>();
@@ -69,14 +69,14 @@ public class SoundManager
         sfxSource.loop = false;
     }
 
-    // Play music by key interface.
+    
     public void PlayMusic(string soundKey)
     {
         musicSource.Stop();
         Play(soundKey, SoundType.SOUND_MUSIC);
     }
 
-    // Play utility.
+  
     private void Play(string soundKey, SoundType soundType)
     {
         Dictionary<string, AudioClip> targetDictionary;

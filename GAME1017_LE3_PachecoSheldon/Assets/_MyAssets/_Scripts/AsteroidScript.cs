@@ -4,31 +4,39 @@ using UnityEngine;
 
 public class AsteroidScript : MonoBehaviour
 {
-    public Color tint;
-    public Vector2 direction;
-    public float rotation;
+    public Color Tint;
+    public Vector2 Direction;
+    public float Rotation;
     [SerializeField] float minRotation;
     [SerializeField] float maxRotation;
     [SerializeField] float tintAmount;
-   
-    // TODO: Create a private but Serialized reference to AsteroidData called data.
-    
+    [SerializeField] AsteroidData data;
     private GameObject child;
-    private int currentPhase;
+    public int currentPhase = 0;
+    public int CurrentPhase
+    {
+        get { return currentPhase; }
+        set { currentPhase = AsteroidManager.Instance.phase; }
+    }
+
+    public AsteroidData AsteroidData
+    {
+        get { return data; }
+        set { data = value; }
+    }
+
     void Start()
     {
-        currentPhase = 0;
-        // TODO: Fill in for the Week 5 lab from the solution. Sets the data based on the ScriptableObject reference.
-        //
-        //
-        //
+        data.ApplyToAsteroid(this);
+        child = transform.Find("Asteroid").gameObject;
+       
     }
 
     void Update()
     {
-        transform.Translate(direction * Time.deltaTime);
-        child.transform.Rotate(0f, 0f, rotation * Time.deltaTime);
-        // Wrap asteroid to other side of screen.
+        transform.Translate(Direction * Time.deltaTime);
+        child.transform.Rotate(0f, 0f, Rotation * Time.deltaTime);
+
         if (transform.position.x < -8.5f)
         {
             transform.position = new Vector2(8.5f, transform.position.y);
@@ -47,8 +55,15 @@ public class AsteroidScript : MonoBehaviour
         }
     }
 
-    private int RandomSign()
+    public void InitializeAsteroid(AsteroidData data)
     {
-        return 1 - 2 * Random.Range(0, 2);
+        this.data = data;
+        data.ApplyToAsteroid(this);
+    }
+
+    public void SetAsteroidTintColor(GameObject chunk, Color tint)
+    {
+        this.Tint = tint;
+        child.GetComponent<SpriteRenderer>().color = tint;
     }
 }
