@@ -27,7 +27,10 @@ public class Game : MonoBehaviour
         SOMA = new SoundManager();
         SOMA.Initialize(gameObject);
         SOMA.AddSound("Jump", Resources.Load<AudioClip>("jump"), SoundManager.SoundType.SOUND_SFX);
+        SOMA.AddSound("Roll", Resources.Load<AudioClip>("roll"), SoundManager.SoundType.SOUND_SFX);
+        SOMA.AddSound("Cheering", Resources.Load<AudioClip>("Cheering"), SoundManager.SoundType.SOUND_SFX);
         SOMA.AddSound("StillDre", Resources.Load<AudioClip>("StillDre"), SoundManager.SoundType.SOUND_MUSIC);
-        SOMA.PlayMusic("StillDre");
+        SOMA.AddSound("Flair - Andrew Swarbrick (ingame music)", Resources.Load<AudioClip>("Flair - Andrew Swarbrick (ingame music)"), SoundManager.SoundType.SOUND_MUSIC);
+        SOMA.PlayMusic("Flair - Andrew Swarbrick (ingame music)");
     }
 }

@@ -13,12 +13,14 @@ public class PlayerScript : MonoBehaviour
     private float groundCheckHeight = 0.1f;
     private Animator an;
     private Rigidbody2D rb;
+    private CapsuleCollider2D cc;
 
     void Start()
     {
         an = GetComponentInChildren<Animator>();
         isGrounded = false; // Always start in air.
         rb = GetComponent<Rigidbody2D>();
+        cc = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -32,23 +34,38 @@ public class PlayerScript : MonoBehaviour
         an.SetBool("isMoving", Mathf.Abs(moveInputRaw) > 0f);
         // Set horizontal force in player. Use current vertical velocity.
         rb.velocity = new Vector2(moveInput * moveForce * Time.fixedDeltaTime, rb.velocity.y);
-        
-        // Flip the player. Could use down and up functions for not every frame.
-        if (moveInputRaw != 0)
-            transform.localScale = new Vector3(moveInputRaw, 1, 1);
 
-        // Trigger jump. Use current horizontal velocity.
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        // Flip the player. Could use down and up functions for not every frame.
+        //if (moveInputRaw != 0)
+        //    transform.localScale = new Vector3(moveInputRaw, 1, 1);
+
+        // Trigger jump. Use current horizontal velocity. Cannot jump in a roll.
+        if (isGrounded && !an.GetBool("isRolling") && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
             Game.Instance.SOMA.PlaySound("Jump");
+        }
+
+        if (isGrounded && Input.GetKeyDown(KeyCode.S))
+        {
+            an.SetBool("isRolling", true);
+            cc.offset = new Vector2(-0.3885997f, 0.4644484f);
+            cc.size = new Vector2(0.9594814f, 0.9594814f);
+            Game.Instance.SOMA.PlayLoopedSound("Roll");
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            an.SetBool("isRolling", false);
+            cc.offset = new Vector2(-0.3884602f, 0.5020161f);
+            cc.size = new Vector2(0.9624975f, 1.438831f);
+            Game.Instance.SOMA.StopLoopedSound();
         }
     }
 
     private void GroundedCheck()
     {
         isGrounded = Physics2D.OverlapBox(groundDetect.position, 
-            new Vector2(groundCheckWidth, groundCheckHeight), 0f, groundLayer);
+        new Vector2(groundCheckWidth, groundCheckHeight), 0f, groundLayer);
         an.SetBool("isJumping", !isGrounded);
     }
 }

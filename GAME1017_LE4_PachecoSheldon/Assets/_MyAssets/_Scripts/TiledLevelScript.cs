@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,24 +9,23 @@ using UnityEngine.Tilemaps;
 public class TiledLevelScript : MonoBehaviour
 {
     [SerializeField] private Tilemap[] tileMaps;
-    // TODO: In the Inspector, remove all references in the tileBases array, set size to 0.
-    [SerializeField] private TileBase[] tileBases; // Next time, loading this will be dynamic.
+    [SerializeField] private TileBase[] tileBases; // This time, loading is dynamic.
     [SerializeField] private char[] tileKeys;
     [SerializeField] private char[] tileObstacles;
-    // TODO: Remove the initialized values for rows and cols.
-    private int rows = 24; // Y-axis.
-    private int cols = 32; // X-axis.
+    private int rows; // Y-axis.
+    private int cols; // X-axis.
 
-    // TODO: Add new fields for the color-changing background functionality.
-    //
-    //
-    //
-    // TODO: Also add the reference to the camera.
+    [SerializeField] private Color targetColor; // Serialized for debug purposes.
+    [SerializeField] private Color[] targetColors; // Array of target colors to transition to.
+    [SerializeField] private float transitionDuration; // Duration of the transition in seconds. Warning: do not set too low! You've been warned.
+    [SerializeField] private float pauseDuration; 
+
+    private Camera cam;
 
     void Start()
     {
-        // TODO: Set the camera to the main one.
-        // TODO: Start the color change coroutine.
+        cam = Camera.main;
+        StartCoroutine(ChangeBackgroundColor());
         LoadLevel();
     }
 
@@ -33,7 +33,8 @@ public class TiledLevelScript : MonoBehaviour
     {
         try
         {
-            // TODO: Create the function for loading and sorting tile bases.
+            // Load the TileBases.
+            LoadAndSortTileBases();
             // Load tile data first.
             using (StreamReader reader = new StreamReader("Assets/TileData.txt"))
             {
@@ -48,7 +49,7 @@ public class TiledLevelScript : MonoBehaviour
             // Then load level data.
             using (StreamReader reader = new StreamReader("Assets/Level1.txt"))
             {
-                // TODO: Add call to GetRowsAndColumns method.
+                GetRowsAndColumns();
                 string line;
                 for (int row = 1; row < rows+1; row++)
                 {
@@ -79,7 +80,16 @@ public class TiledLevelScript : MonoBehaviour
         }
     }
 
-    // TODO: Add GetRowsAndColumns method here.
+    private void GetRowsAndColumns()
+    {
+        // Read all lines from the text file.
+        string[] lines = File.ReadAllLines("Assets/Level1.txt");
+
+        // Check if any lines were read
+        if (lines.Length == 0) return;
+        rows = lines.Length;
+        cols = lines[0].Length;
+    }
 
     private void SetTile(int tileMapIndex, int charIndex, int col, int row)
     {
@@ -92,9 +102,80 @@ public class TiledLevelScript : MonoBehaviour
         tileMaps[tileMapIndex].SetTile(new Vector3Int(col, -row, 0), tileBases[charIndex]);
     }
 
-    // TODO: Add LoadAndSortTileBases method here.
+    private void LoadAndSortTileBases()
+    {
+        tileBases = Resources.LoadAll<TileBase>("TileBases");
+        Array.Sort(tileBases, (x, y) => ExtractNumber(x.name).CompareTo(ExtractNumber(y.name)));
+        //Array.Sort(tileBases, CompareTileNames);
+    }
 
-    // TODO: Add ExtractNumber helper method here.
+    int ExtractNumber(string name)
+    {
+        return Int32.Parse(new string(name.Where(Char.IsDigit).ToArray()));
+    }
 
-    // TODO: Add ChangeBackgroundColor method here.
+    // Below are longer versions of the sort, which may be easier to understand.
+
+    //private int CompareTileNames(TileBase x, TileBase y)
+    //{
+    //    int numberX = ExtractNumber(x.name);
+    //    int numberY = ExtractNumber(y.name);
+    //    return numberX.CompareTo(numberY);
+    //}
+
+    //private int ExtractNumber(string name)
+    //{
+    //    string numberString = "";
+    //    foreach (char c in name)
+    //    {
+    //        if (Char.IsDigit(c))
+    //        {
+    //            numberString += c;
+    //        }
+    //    }
+    //    return Int32.Parse(numberString);
+    //}
+
+    IEnumerator ChangeBackgroundColor()
+    {
+        while (true)
+        {
+            // Start with the current background color.
+            Color startColor = cam.backgroundColor;
+
+            do // Set a target color.
+            {
+                targetColor = targetColors[UnityEngine.Random.Range(0, targetColors.Length)];
+            }
+            while (targetColor == startColor);
+
+            // Calculate the color increment for each channel.
+            float rIncrement = (targetColor.r - startColor.r) / transitionDuration;
+            float gIncrement = (targetColor.g - startColor.g) / transitionDuration;
+            float bIncrement = (targetColor.b - startColor.b) / transitionDuration;
+
+            // Transition to the target color.
+            float elapsedTime = 0f;
+            while (elapsedTime < transitionDuration)
+            {
+                Color newColor = new Color(
+                    startColor.r + rIncrement * elapsedTime,
+                    startColor.g + gIncrement * elapsedTime,
+                    startColor.b + bIncrement * elapsedTime,
+                    cam.backgroundColor.a
+                );
+                cam.backgroundColor = newColor;
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            // Set the camera's background color to the target color.
+            cam.backgroundColor = targetColor;
+
+            // Wait for a brief pause before repeating the process.
+            yield return new WaitForSeconds(pauseDuration);
+        }
+    }
+
+    
 }

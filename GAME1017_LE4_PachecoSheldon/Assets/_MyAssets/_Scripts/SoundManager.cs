@@ -73,7 +73,8 @@ public class SoundManager
     public void PlayMusic(string soundKey)
     {
         musicSource.Stop();
-        Play(soundKey, SoundType.SOUND_MUSIC);
+        musicSource.clip = musicDictionary[soundKey];
+        musicSource.Play();
     }
 
     // Play utility.
