@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,22 +6,13 @@ using UnityEngine;
 // TODO: Make this whole script. :)
 public class ObstacleManager : MonoBehaviour
 {
-    [SerializeField] GameObject obstaclePrefab;
-    [SerializeField] List<GameObject> obstacles;
-    [SerializeField] float moveSpeed;
-    [SerializeField] Sprite[] sprites;
-
-    private int obsCtr = 0; // Used to manage the gaps between obstacles.
+    public GameObject[] obstaclePrefab = new GameObject[3];
+    public List<GameObject> obstacles = new List<GameObject>();
+    public float moveSpeed = -4.0f;
+    int ChosenObstacle= 0;
+    private float timer = 0f; // Used to manage the gaps between obstacles.
     void Start()
     {
-        obstacles = new List<GameObject>(); 
-        for (int i = 0; i < 9; i++)
-        {
-            GameObject obsInst = GameObject.Instantiate(obstaclePrefab, new Vector3(i * 4f, -16f, 0f), Quaternion.identity);
-            obsInst.transform.parent = transform;
-            obstacles.Add(obsInst);
-        }
-        // Start the InvokeRepeating method.
         InvokeRepeating("MoveObstacles", 0f, Time.fixedDeltaTime);
     }
     private void MoveObstacles()
@@ -29,20 +21,39 @@ public class ObstacleManager : MonoBehaviour
         {
             obstacle.transform.Translate(moveSpeed * Time.fixedDeltaTime, 0f, 0f);
         }
-        if (obstacles[0].transform.position.x <= -4f)
+        if (obstacles.Count != 0)
         {
-            // Remove the first obstacle.
-            Destroy(obstacles[0]);
-            obstacles.RemoveAt(0);
-            // Push a new obstacle at the end.
-            GameObject obsInst = GameObject.Instantiate(obstaclePrefab, new Vector3(32f, -16f, 0f), Quaternion.identity);
-            if (obsCtr++ % 3 == 0)
+            if (obstacles[0].transform.position.x <= -10f)
             {
-                obsInst.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
-                obsInst.AddComponent<BoxCollider2D>();
+                // Remove the first obstacle.
+                Destroy(obstacles[0]);
+                obstacles.RemoveAt(0);
+                // Push a new obstacle at the end.
+
+                GameObject obsInst = GameObject.Instantiate(obstaclePrefab[ChosenObstacle = Random.Range(0, obstaclePrefab.Length)], new Vector3(39.8f, obstaclePrefab[ChosenObstacle].transform.position.y, 0f), Quaternion.identity);
+
+                obsInst.transform.parent = transform;
+                obstacles.Add(obsInst);
             }
-            obsInst.transform.parent = transform;
-            obstacles.Add(obsInst);
+        }
+
+    }
+    public void Update()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (timer <= 0f)
+            {
+                GameObject obsInst = GameObject.Instantiate(obstaclePrefab[ChosenObstacle=Random.Range(0, obstaclePrefab.Length)], new Vector3(39.8f, obstaclePrefab[ChosenObstacle].transform.position.y, 0f), Quaternion.identity);
+
+                obsInst.transform.parent = transform;
+                obstacles.Add(obsInst);
+                timer = 3.0f;
+            }
+        }
+        if (obstacles.Count < 3)
+        {
+            timer -= Time.deltaTime;
         }
     }
 }

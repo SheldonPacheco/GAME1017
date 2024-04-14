@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    [SerializeField] Transform[] backgrounds;
-    [SerializeField] Transform[] midgrounds;
-    [SerializeField] Transform[] foregrounds;
-    [SerializeField] float[] moveSpeeds;
+    public Transform[] backgrounds;
+    public Transform[] midgrounds;
+    public Transform[] foregrounds;
+    public float[] moveSpeeds;
     private float[] sizes;
     private float[] backgroundStarts;
     private float[] midgroundStarts;
@@ -75,25 +75,25 @@ public class BackgroundManager : MonoBehaviour
             foreground.Translate(moveSpeeds[2] * Time.fixedDeltaTime, 0.0f, 0.0f);
         }
         // Bounce the backgrounds back.
-        if (backgrounds[0].transform.position.x <= -sizes[0])
+        if (backgrounds[0].transform.position.x <= -sizes[0]+80)
         {
             for (int i = 0; i < backgrounds.Length; i++)
             {
-                backgrounds[i].transform.position = new Vector3(backgroundStarts[i], 0f, 0f);
+                backgrounds[i].transform.position = new Vector3(backgroundStarts[i], -12.0024f, 0f);
             }
         }
-        if (midgrounds[0].transform.position.x <= -sizes[1])
+        if (midgrounds[0].transform.position.x <= -sizes[1]-12.5)
         {
             for (int i = 0; i < midgrounds.Length; i++)
             {
-                midgrounds[i].transform.position = new Vector3(midgroundStarts[i], 0f, 0f);
+                midgrounds[i].transform.position = new Vector3(midgroundStarts[i], -7.9352f, 0f);
             }
         }
         if (foregrounds[0].transform.position.x <= -sizes[2])
         {
             for (int i = 0; i < foregrounds.Length; i++)
             {
-                foregrounds[i].transform.position = new Vector3(foregroundStarts[i], -16f, 0f);
+                foregrounds[i].transform.position = new Vector3(foregroundStarts[i], -20.14f, 0f);
             }
         }
     }

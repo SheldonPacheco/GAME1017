@@ -33,7 +33,7 @@ public class PlayerScript : MonoBehaviour
         rb.velocity = new Vector2(moveInput * moveForce * Time.fixedDeltaTime, rb.velocity.y);
 
         // Trigger jump. Use current horizontal velocity. Cannot jump in a roll.
-        if (isGrounded && !an.GetBool("sliding") && Input.GetButtonDown("Jump"))
+        if (isGrounded && !an.GetBool("Sliding") && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
             //SoundManager.Instance.SOMA.PlaySound("Jump");
@@ -41,14 +41,14 @@ public class PlayerScript : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.S))
         {
-            an.SetBool("sliding", true);
+            an.SetBool("Sliding", true);
             cc.offset = new Vector2(0.33f, -1f);
             cc.size = new Vector2(2f, 2f);
             //SoundManager.Instance.SOMA.PlayLoopedSound("Roll");
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            an.SetBool("sliding", false);
+            an.SetBool("Sliding", false);
             cc.offset = new Vector2(0.33f, -0.25f);
             cc.size = new Vector2(2f, 3.5f);
             //SoundManager.Instance.SOMA.StopLoopedSound();
