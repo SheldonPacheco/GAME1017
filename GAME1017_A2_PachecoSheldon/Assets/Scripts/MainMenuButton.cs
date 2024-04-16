@@ -36,6 +36,7 @@ public class MainMenuButton : MonoBehaviour
 
         if (hitCollider != null && hitCollider.gameObject == gameObject)
         {
+            EventManager.playerHealth = 3;
             SoundManager.Instance.PlaySFX(SoundManager.Instance.buttonPress);
             SceneManager.LoadScene("TitleScene");
         }

@@ -879,9 +879,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: -10}
+    m_Target: {x: -11.830137, y: -13.086576, z: -9.978184}
     speed: 2
-    m_Value: {x: 0, y: 0, z: -10}
+    m_Value: {x: -11.830137, y: -13.086576, z: -9.978184}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -931,9 +931,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.124355
+    m_Target: 9.942823
     speed: 2
-    m_Value: 12.124355
+    m_Value: 9.942823
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1192,23 +1192,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: be870000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 4451ffff2c59ffff025dffff4861ffffc078ffffd878ffff5c7cffffe88bffff188dffffa48dffff3e8effffe2a8ffff28a9ffff7ea9ffff04acffffd4c4ffff28c5ffff24d4ffff98d4ffffe6d4ffff60d5ffffecd5ffffdee4ffffbcfafffff4ffffff6aad0000
+      m_SelectedIDs: 5c860000
+      m_LastClickedID: 34396
+      m_ExpandedIDs: 28aaffff66b1fffffebafffffabdffff1cc6ffff10effffff4fafffff4ffffffbead000048b10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: LivesText
-        m_OriginalName: LivesText
+        m_Name: SpikeBall
+        m_OriginalName: SpikeBall
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -40654
+        m_UserData: -10330
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 4
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 9}
@@ -1266,7 +1266,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/GameObjects
+    - Assets/Scripts
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1284,7 +1284,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: a6800000
     m_LastClickedID: 32934
-    m_ExpandedIDs: 00000000b8850000088800001a8800006c8800006e88000070880000728800007488000076880000788800007a8800007c8800007e88000080880000
+    m_ExpandedIDs: 00000000ee870000f0870000f2870000f4870000f6870000f8870000fa870000fc870000fe8700000088000002880000048800000688000008880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1310,21 +1310,21 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 300}
+    scrollPos: {x: 0, y: 344}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000001a8800006c8800006e88000070880000728800007488000076880000788800007a8800007c8800007e880000808800000e890000bc950000
+    m_ExpandedIDs: ffffffff00000000ee870000f0870000f2870000f4870000f6870000f8870000fa870000fc870000fe8700000088000002880000048800000688000008880000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: TreeObstacle
-      m_OriginalName: TreeObstacle
+      m_Name: BackgroundManager
+      m_OriginalName: BackgroundManager
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 34748
+      m_UserData: 34014
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0

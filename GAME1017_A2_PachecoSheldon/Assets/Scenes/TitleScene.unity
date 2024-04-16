@@ -1536,6 +1536,7 @@ MonoBehaviour:
   playerHit: {fileID: 8300000, guid: ca3fbffd3d97930479b9e64113021cef, type: 3}
   buttonPress: {fileID: 8300000, guid: 3e60655378ace274f8a3a967827d4eac, type: 3}
   playerRolling: {fileID: 8300000, guid: b36d7f211be1d3247b5ea7ab92283443, type: 3}
+  playerJump: {fileID: 8300000, guid: 0b234a85ac96a9e4189be22b9fd1fcd3, type: 3}
   masterVolumeSlider: {fileID: 1999794074}
   MusicVolumeSlider: {fileID: 200838349}
   SFXVolumeSlider: {fileID: 1583649540}

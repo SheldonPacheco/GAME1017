@@ -18,8 +18,10 @@ public class EventManager : MonoBehaviour
     public static int playerHighScore = 0;
     public static int playerHealth = 4;
     private static int sceneLoadCount = 0;
-    float timer = 3f;
+    float timer = 2f;
     public static float invulnerableTimer = 0f;
+    Color invulnerableColor;
+    public static float invulnerableTimerStart = 0f;
     public static EventManager Instance { get; private set; }
 
     private void Start()
@@ -54,19 +56,29 @@ public class EventManager : MonoBehaviour
 
     void Update()
     {
-        if ( invulnerableTimer > 0f)
-        {
-            invulnerableTimer -= Time.deltaTime;
-            invulnerableTimerText.enabled = true;
-        }
-        if (invulnerableTimer <= 0f)
-        {
-            invulnerableTimerText.enabled = false;
-        }
+         
         if (SceneManager.GetActiveScene().name == "PlayScene")
         {
-            
-            if (invulnerableTimer <= 0)
+            invulnerableTimerText.text = "Invulnerable Timer: " + invulnerableTimer;
+            if (invulnerableTimer > 0f)
+            {
+                invulnerableColor = player.GetComponent<SpriteRenderer>().color;
+                invulnerableColor.a = 0.5f;
+                player.GetComponent<SpriteRenderer>().color = invulnerableColor;    
+
+                invulnerableTimer -= Time.deltaTime;
+                invulnerableTimerText.gameObject.SetActive(true);
+            }
+            if (invulnerableTimer <= 0f)
+            {
+                invulnerableColor = player.GetComponent<SpriteRenderer>().color;
+                invulnerableColor.a = 1f;
+                player.GetComponent<SpriteRenderer>().color = invulnerableColor;
+
+                invulnerableTimer = 0f;
+                invulnerableTimerText.gameObject.SetActive(false);
+            }
+            if (invulnerableTimer <= 0f)
             {
                 
                 if (playerHealth == 3)
@@ -80,28 +92,41 @@ public class EventManager : MonoBehaviour
                     playerLive1.enabled = true;
                     playerLive2.enabled = true;
                     playerLive3.enabled = false;
-                    invulnerableTimer = 10f;
-                    invulnerableTimerText.enabled = true;
+                    if (invulnerableTimerStart == 0f)
+                    {
+                        invulnerableTimer = 10f;
+                        invulnerableTimerStart = 3.0f;
+                    }
                 }
                 if (playerHealth == 1)
                 {
                     playerLive1.enabled = true;
                     playerLive2.enabled = false;
                     playerLive3.enabled = false;
-                    invulnerableTimer = 10f;
-                    invulnerableTimerText.enabled = true;
+                    if (invulnerableTimerStart == 3f)
+                    {
+                        invulnerableTimer = 10f;
+                        invulnerableTimerStart = 0.0f;
+                    }
                 }
                 if (playerHealth == 0)
                 {
                     playerLive1.enabled = false;
                     playerLive2.enabled = false;
                     playerLive3.enabled = false;
-                    sceneLoadCount = 0;
                     player.GetComponent<Animator>().SetBool("Death", true);
+                    player.GetComponent<CapsuleCollider2D>().offset = new Vector2(-0.06393222f, 0.03418268f);
+                    player.GetComponent<CapsuleCollider2D>().size = new Vector2(0.4365608f, 0.4818729f);
+                    player.GetComponent<PlayerScript>().enabled = false;
+                    invulnerableTimerStart = 0f;
+                    invulnerableTimer = 0f;
+                    sceneLoadCount = 0;
+                    playerHealth = 0;
                     timer -= Time.deltaTime;
-                    if (timer <= 0)
+                    if (timer <= 0f)
                     {
                         SceneManager.LoadScene("GameoverScene");
+                        timer = 2f;
                     }
 
                 }

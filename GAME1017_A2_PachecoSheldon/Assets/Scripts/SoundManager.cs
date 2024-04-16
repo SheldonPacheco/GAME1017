@@ -12,6 +12,7 @@ public class SoundManager : MonoBehaviour
     public AudioClip playerHit;
     public AudioClip buttonPress;
     public AudioClip playerRolling;
+    public AudioClip playerJump;
 
     public Slider masterVolumeSlider;
     public Slider MusicVolumeSlider;

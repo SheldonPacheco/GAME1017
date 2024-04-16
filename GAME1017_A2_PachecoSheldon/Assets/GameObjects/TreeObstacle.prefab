@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6952054523009326004}
   - component: {fileID: 6400997683017744264}
   - component: {fileID: 2690744518259072263}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreeBranchBase
   m_TagString: TreeBranch
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 1921128004077636761}
   - component: {fileID: 5933486740184946403}
   - component: {fileID: 572246356159561188}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreeBranch
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -327,7 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5942504244745443265}
   - component: {fileID: 7995261456424018571}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreeObstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 2182644989616056230}
   - component: {fileID: 7276274986516334733}
   - component: {fileID: 5718211238890836041}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreeBranch
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 433840845870732726}
   - component: {fileID: 5602388941986888525}
   - component: {fileID: 8098279171076318688}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: TreeBranchBase
   m_TagString: TreeBranch
   m_Icon: {fileID: 0}

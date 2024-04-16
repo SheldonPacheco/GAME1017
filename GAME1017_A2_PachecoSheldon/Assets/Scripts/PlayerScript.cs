@@ -37,14 +37,14 @@ public class PlayerScript : MonoBehaviour
         if (isGrounded && !an.GetBool("Rolling") && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
-            //SoundManager.Instance.SOMA.PlaySound("Jump");
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.playerJump);
         }
 
         if (isGrounded && Input.GetKeyDown(KeyCode.S))
         {
             an.SetBool("Rolling", true);
-            cc.offset = new Vector2(-0.06393222f, -0.3617879f);
-            cc.size = new Vector2(0.4365608f, 0.4818728f);
+            cc.offset = new Vector2(-0.06393222f, 0.03418268f);
+            cc.size = new Vector2(0.4365608f, 0.4818729f);
             SoundManager.Instance.PlaySFX(SoundManager.Instance.playerRolling);
         }
         else if (Input.GetKeyUp(KeyCode.S))
@@ -66,11 +66,6 @@ public class PlayerScript : MonoBehaviour
         if (EventManager.invulnerableTimer <= 0)
         {
             if (collision.CompareTag("Obstacle"))
-            {
-                EventManager.playerHealth--;
-                SoundManager.Instance.PlaySFX(SoundManager.Instance.playerHit);
-            }
-            if (collision.CompareTag("TreeBranch"))
             {
                 EventManager.playerHealth--;
                 SoundManager.Instance.PlaySFX(SoundManager.Instance.playerHit);
