@@ -186,7 +186,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 5
-        y: 10
+        y: 158
         width: 76
         height: 106
       alignment: 0
@@ -207,7 +207,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 83
-        y: 10
+        y: 158
         width: 72
         height: 106
       alignment: 0
@@ -228,7 +228,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 163
-        y: 9
+        y: 157
         width: 63
         height: 107
       alignment: 0
@@ -249,7 +249,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 232
-        y: 8
+        y: 156
         width: 66
         height: 108
       alignment: 0
@@ -270,7 +270,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 306
-        y: 8
+        y: 156
         width: 76
         height: 108
       alignment: 0
@@ -291,7 +291,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 403
-        y: 7
+        y: 155
         width: 65
         height: 109
       alignment: 0
@@ -312,7 +312,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 476
-        y: 8
+        y: 156
         width: 63
         height: 107
       alignment: 0
@@ -333,7 +333,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 548
-        y: 8
+        y: 156
         width: 68
         height: 106
       alignment: 0
@@ -354,7 +354,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 629
-        y: 7
+        y: 155
         width: 72
         height: 105
       alignment: 0
@@ -375,7 +375,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 710
-        y: 6
+        y: 154
         width: 68
         height: 105
       alignment: 0
@@ -396,7 +396,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 786
-        y: 4
+        y: 152
         width: 63
         height: 107
       alignment: 0
@@ -408,6 +408,174 @@ TextureImporter:
       bones: []
       spriteID: 44ed85e4051194b488c8565fe29d16a5
       internalID: -1957301630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_11
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 81
+        width: 57
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ee265cc8402a3b4f9843b04df431502
+      internalID: 1123749777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_12
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 78
+        width: 65
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe6c8ee0051e33c48a459116d9642c8f
+      internalID: -1225259154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_13
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 71
+        width: 57
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff088dc89280434b825900d7cc65c32
+      internalID: 1972187612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_14
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 79
+        width: 65
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5563863345ea1a841a95e64417af1245
+      internalID: 135829777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_15
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 38
+        width: 63
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b857609fec5f04e914d555a794d980
+      internalID: 330314501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_16
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 41
+        width: 90
+        height: 105
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b2faf0d401b714c909c3bde332f683
+      internalID: -1433682201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_17
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 40
+        width: 90
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9c39db96dedf7e42a0b4ad5dc67a1db
+      internalID: -1758315811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Goblin concept art_18
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 42
+        width: 108
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a52aee3bc4e8a2459a242b9006a2281
+      internalID: -1617375030
       vertices: []
       indices: 
       edges: []
@@ -426,6 +594,14 @@ TextureImporter:
       Goblin concept art_0: 1595814950
       Goblin concept art_1: 549770513
       Goblin concept art_10: -1957301630
+      Goblin concept art_11: 1123749777
+      Goblin concept art_12: -1225259154
+      Goblin concept art_13: 1972187612
+      Goblin concept art_14: 135829777
+      Goblin concept art_15: 330314501
+      Goblin concept art_16: -1433682201
+      Goblin concept art_17: -1758315811
+      Goblin concept art_18: -1617375030
       Goblin concept art_2: 1808517042
       Goblin concept art_3: -433474118
       Goblin concept art_4: -519307095

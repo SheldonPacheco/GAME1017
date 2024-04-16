@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class PlayerScript : MonoBehaviour
         rb.velocity = new Vector2(moveInput * moveForce * Time.fixedDeltaTime, rb.velocity.y);
 
         // Trigger jump. Use current horizontal velocity. Cannot jump in a roll.
-        if (isGrounded && !an.GetBool("Sliding") && Input.GetButtonDown("Jump"))
+        if (isGrounded && !an.GetBool("Rolling") && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce * Time.fixedDeltaTime);
             //SoundManager.Instance.SOMA.PlaySound("Jump");
@@ -41,17 +42,16 @@ public class PlayerScript : MonoBehaviour
 
         if (isGrounded && Input.GetKeyDown(KeyCode.S))
         {
-            an.SetBool("Sliding", true);
-            cc.offset = new Vector2(0.33f, -1f);
-            cc.size = new Vector2(2f, 2f);
-            //SoundManager.Instance.SOMA.PlayLoopedSound("Roll");
+            an.SetBool("Rolling", true);
+            cc.offset = new Vector2(-0.06393222f, -0.3617879f);
+            cc.size = new Vector2(0.4365608f, 0.4818728f);
+            SoundManager.Instance.PlaySFX(SoundManager.Instance.playerRolling);
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            an.SetBool("Sliding", false);
-            cc.offset = new Vector2(0.33f, -0.25f);
-            cc.size = new Vector2(2f, 3.5f);
-            //SoundManager.Instance.SOMA.StopLoopedSound();
+            an.SetBool("Rolling", false);
+            cc.offset = new Vector2(-0.06393222f, -0.06967986f);
+            cc.size = new Vector2(0.4365608f, 1.066089f);
         }
     }
 
@@ -61,4 +61,20 @@ public class PlayerScript : MonoBehaviour
 
         an.SetBool("Jumping", !isGrounded);
         }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (EventManager.invulnerableTimer <= 0)
+        {
+            if (collision.CompareTag("Obstacle"))
+            {
+                EventManager.playerHealth--;
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.playerHit);
+            }
+            if (collision.CompareTag("TreeBranch"))
+            {
+                EventManager.playerHealth--;
+                SoundManager.Instance.PlaySFX(SoundManager.Instance.playerHit);
+            }
+        }
+    }
 }
