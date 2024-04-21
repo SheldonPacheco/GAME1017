@@ -18,7 +18,7 @@ public class EventManager : MonoBehaviour
     public static int playerHighScore = 0;
     public static int playerHealth = 4;
     private static int sceneLoadCount = 0;
-    float timer = 2f;
+    float timer = 1f;
     public static float invulnerableTimer = 0f;
     Color invulnerableColor;
     public static float invulnerableTimerStart = 0f;
@@ -50,6 +50,13 @@ public class EventManager : MonoBehaviour
             invulnerableTimerText = uiContainer.transform.Find("InvulnerableTimer").GetComponent<TMP_Text>();
 
             sceneLoadCount++;
+
+        }
+        if (scene.name == "PlayScene" && sceneLoadCount >= 1)
+        {
+            EventManager.playerHealth = 3;
+            EventManager.player.GetComponent<CapsuleCollider2D>().offset = new Vector2(-0.06393222f, -0.3617879f);
+            EventManager.player.GetComponent<CapsuleCollider2D>().size = new Vector2(0.4365608f, 0.4818728f);
 
         }
     }
@@ -117,23 +124,24 @@ public class EventManager : MonoBehaviour
                     player.GetComponent<Animator>().SetBool("Death", true);
                     player.GetComponent<CapsuleCollider2D>().offset = new Vector2(-0.06393222f, 0.03418268f);
                     player.GetComponent<CapsuleCollider2D>().size = new Vector2(0.4365608f, 0.4818729f);
-                    player.GetComponent<PlayerScript>().enabled = false;
-                    invulnerableTimerStart = 0f;
-                    invulnerableTimer = 0f;
-                    sceneLoadCount = 0;
-                    playerHealth = 0;
-                    timer -= Time.deltaTime;
-                    if (timer <= 0f)
-                    {
-                        SceneManager.LoadScene("GameoverScene");
-                        timer = 2f;
-                    }
-
                 }
             }
-            }
+            if (playerHealth <= 0)
+            {
+                invulnerableTimer = 0f;
+                sceneLoadCount = 0;
+                playerHealth = 0;
+                timer -= Time.deltaTime;
+                if (timer <= 0f)
+                {
+                    SceneManager.LoadScene("GameoverScene");
+                    timer = 1f;
+                }
 
+            }
         }
+
+    }
 
     private void OnDestroy()
     {

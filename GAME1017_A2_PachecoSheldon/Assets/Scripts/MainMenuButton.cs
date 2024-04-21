@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuButton : MonoBehaviour
 {
-    // Update is called once per frame
-    private void Start()
+    void Start()
     {
         SoundManager.Instance.StopMusic(SoundManager.Instance.gameMusic);
         SoundManager.Instance.PlayMusic(SoundManager.Instance.deathMusic);

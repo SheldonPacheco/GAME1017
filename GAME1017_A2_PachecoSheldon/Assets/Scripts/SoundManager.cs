@@ -46,6 +46,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+        
         SoundManager.Instance.PlayMusic(SoundManager.Instance.gameMusic);
 
 

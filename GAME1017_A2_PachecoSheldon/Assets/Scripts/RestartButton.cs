@@ -20,9 +20,6 @@ public class RestartButton : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            EventManager.playerHealth = 3;
-            EventManager.player.GetComponent<CapsuleCollider2D>().offset = new Vector2(-0.06393222f, -0.3617879f);
-            EventManager.player.GetComponent<CapsuleCollider2D>().size = new Vector2(0.4365608f, 0.4818728f);
             SoundManager.Instance.StopMusic(SoundManager.Instance.deathMusic);
             SoundManager.Instance.PlayMusic(SoundManager.Instance.gameMusic);
             MouseClick();
